@@ -1,0 +1,16 @@
+keys,en
+loginTitle,Login
+exceptionText,Exception:
+emailText,Email
+passwordText,Password
+validateButton,Validate
+noViewError,No view is set for this route
+welcomeTitle,Welcome
+celsiusButton,Celsius
+kelvinButton,Kelvin
+fahrenheitButton,Fahrenheit
+weatherInParisText,Weather in Paris
+noForecastText,There is no forecast to display.
+errorOccurredText,"An error has occurred\, please retry"
+retryButton,Retry
+exceptionLogin,Login and password are not correct
