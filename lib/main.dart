@@ -4,9 +4,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_test_sncf/app_theme.dart';
 import 'package:weather_test_sncf/core/blocs/forecast/get_forecast_bloc.dart';
-import 'package:weather_test_sncf/login/login_view.dart';
 import 'package:weather_test_sncf/res/i18n.dart';
 import 'package:weather_test_sncf/routes.dart';
+import 'package:weather_test_sncf/ui/login/login_view.dart';
 
 import 'helpers/dependency_assembly.dart';
 

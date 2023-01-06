@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:weather_test_sncf/app_theme.dart';
 import 'package:weather_test_sncf/core/models/weather.dart';
 import 'package:weather_test_sncf/helpers/constants.dart';
-import 'package:weather_test_sncf/login/login_view.dart';
+import 'package:weather_test_sncf/res/i18n.dart';
 import 'package:weather_test_sncf/routes.dart';
+import 'package:weather_test_sncf/ui/login/login_view.dart';
 
 List<Forecast> mockForecastsCelsius = [
   Forecast(
@@ -72,9 +74,16 @@ class LoginViewWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppTheme(
-      child: const MaterialApp(
+      child: MaterialApp(
         onGenerateRoute: AppRoutes.getRoutes,
-        home: LoginView(),
+        home: const LoginView(),
+        localizationsDelegates: const [
+          I18nDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: I18nDelegate.supportedLocals,
       ),
     );
   }

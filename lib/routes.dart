@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_test_sncf/errors/error_screen.dart';
-import 'package:weather_test_sncf/login/login_view.dart';
-import 'package:weather_test_sncf/weather/weather_view.dart';
+import 'package:weather_test_sncf/ui/login/login_view.dart';
+import 'package:weather_test_sncf/ui/weather/weather_view.dart';
 
 class AppRoutes {
   static const String routeLogin = '/login';

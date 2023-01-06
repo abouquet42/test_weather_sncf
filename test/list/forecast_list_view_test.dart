@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:weather_test_sncf/app_theme.dart';
 import 'package:weather_test_sncf/core/blocs/forecast/get_forecast_bloc.dart';
 import 'package:weather_test_sncf/core/enums/unit_temp.dart';
 import 'package:weather_test_sncf/core/models/weather.dart';
 import 'package:weather_test_sncf/helpers/constants.dart';
+import 'package:weather_test_sncf/res/i18n.dart';
+import 'package:weather_test_sncf/ui/weather/weather_view.dart';
 import 'package:weather_test_sncf/utils/units.dart';
-import 'package:weather_test_sncf/weather/weather_view.dart';
 
 List<Forecast> mockForecastsCelsius = [
   Forecast(
@@ -83,6 +85,8 @@ void main() {
       // Check there is 2 forecasts
       final forecastsKey = find.byKey(const Key(forecastKey));
       expect(forecastsKey, findsNWidgets(2));
+
+      _verifyAllForecastsDetails(forecasts, tester);
     });
   });
 
@@ -104,6 +108,27 @@ void main() {
   });
 }
 
+void _verifyAllForecastsDetails(
+    List<Forecast> forecastsList,
+    WidgetTester tester,
+    ) async {
+  for (final forecast in forecastsList) {
+    final dateHourFinder = find.text('${forecast.date} ${forecast.hour}');
+    await tester.ensureVisible(dateHourFinder);
+    expect(dateHourFinder, findsOneWidget);
+
+    final tempFinder = find.text('${forecast.main.temp} °C');
+    await tester.ensureVisible(tempFinder);
+    expect(tempFinder, findsOneWidget);
+
+    final weatherFinder = find.text(
+        '${forecast.weathers.first.main}: ${forecast.weathers.first.description}');
+    await tester.ensureVisible(weatherFinder);
+    expect(weatherFinder, findsOneWidget);
+  }
+}
+
+
 class WeatherViewWrapper extends StatelessWidget {
   final GetForecastBloc blocForecast;
 
@@ -118,8 +143,15 @@ class WeatherViewWrapper extends StatelessWidget {
       child: BlocProvider<GetForecastBloc>(
         create: (context) =>
             blocForecast..add(GetForecast(unit: UnitTemp.celsius)),
-        child: const MaterialApp(
-          home: WeatherView(name: username),
+        child: MaterialApp(
+          home: const WeatherView(name: username),
+          localizationsDelegates: const [
+            I18nDelegate(),
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: I18nDelegate.supportedLocals,
         ),
       ),
     );

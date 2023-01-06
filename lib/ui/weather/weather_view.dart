@@ -8,7 +8,7 @@ import 'package:weather_test_sncf/core/models/weather.dart';
 import 'package:weather_test_sncf/helpers/constants.dart';
 import 'package:weather_test_sncf/res/i18n.dart';
 
-import '../core/services/api.dart';
+import '../../core/services/api.dart';
 
 class WeatherView extends StatelessWidget {
   final String name;

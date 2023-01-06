@@ -6,8 +6,8 @@ import 'package:weather_test_sncf/core/blocs/login/login_bloc.dart';
 import 'package:weather_test_sncf/core/enums/unit_temp.dart';
 import 'package:weather_test_sncf/helpers/constants.dart';
 import 'package:weather_test_sncf/res/i18n.dart';
+import 'package:weather_test_sncf/routes.dart';
 
-import '../routes.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
